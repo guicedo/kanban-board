@@ -1,6 +1,7 @@
 import React from 'react';
 import Title from '../commonComponents/title';
 import Cards from './cards';
+import Background from './background.svg';
 
 import './kanbanBoardPage.scss';
 
@@ -31,6 +32,7 @@ const KanbanBoardPage = () => (
         />
       ))}
     </div>
+    <img src={Background} className="kanban-board-page-background" alt="BackgroundImg" />
   </div>
 );
 
