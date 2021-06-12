@@ -1,0 +1,36 @@
+.card-item_container{
+  width: calc(100% - 32px);
+  background: #FFFFFF;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+  margin-bottom: 8px;
+  padding: 16px;
+}
+
+.card-item-closed{
+    &_container{
+    display: grid;
+    grid-template-columns: 1fr 16px;
+    grid-template-rows: auto auto;
+    grid-row-gap: 8px;
+    grid-column-gap: 8px;
+    grid-template-areas:
+    "text edit"
+    "tags tags";
+  }
+  &-text{
+    grid-area: text;
+    color: #212529;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 21px;
+
+    letter-spacing: -0.02em;
+  }
+  &-edit{
+    grid-area: edit;
+  }
+  &-tags{
+    grid-area: tags;
+  }
+}

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Title from '../commonComponents/title';
-import Lists from './lists';
+import List from './list';
 import Background from './background.svg';
 
 import './kanbanBoardPage.scss';
@@ -11,7 +11,7 @@ const KanbanBoardPage = ({lists}) => (
     <Title title="Kanban do projeto"/>
     <div className="kanban-board-page-content">
       {(lists || []).map((list) => (
-        <Lists
+        <List
           list={list}
         />
       ))}
