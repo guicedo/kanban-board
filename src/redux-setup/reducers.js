@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-// import pageReducer from '../features/page/redux/reducer';
+import kanbanBoardReducer from '../features/kanban-board/redux/reducer';
 
 export default combineReducers({
-  // page: pageReducer,
+  kanbanBoard: kanbanBoardReducer,
 });

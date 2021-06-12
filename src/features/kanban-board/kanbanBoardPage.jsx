@@ -1,28 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Title from '../commonComponents/title';
 import Lists from './lists';
 import Background from './background.svg';
 
 import './kanbanBoardPage.scss';
 
-const lists = [{
-  title: "📝  To Do",
-  backgroundColor: "#5CC4FF",
-  tasks: [],
-},
-{
-  title: "💻  In Progress",
-  backgroundColor: "#945AD1",
-  tasks: [],
-},
-{
-  title: "🚀  Done",
-  backgroundColor: "#59D090",
-  tasks: [],
-}];
-
-
-const KanbanBoardPage = () => (
+const KanbanBoardPage = ({lists}) => (
   <div className="kanban-board-page">
     <Title title="Kanban do projeto"/>
     <div className="kanban-board-page-content">
@@ -35,5 +19,13 @@ const KanbanBoardPage = () => (
     <img src={Background} className="kanban-board-page-background" alt="BackgroundImg" />
   </div>
 );
+
+KanbanBoardPage.propTypes = {
+  lists: PropTypes.array,
+};
+
+KanbanBoardPage.defaultProps = {
+  lists: [],
+};
 
 export default KanbanBoardPage;

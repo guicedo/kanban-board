@@ -20,7 +20,7 @@ const INITIAL_STATE = {
     backgroundColor: "#59D090",
     id: 3,
   }],
-  lastListId: 0,
+  lastListId: 3,
 };
 
 const reducer = (state = INITIAL_STATE, action = { type: '@@analiseGeral/INIT' }) => {
@@ -28,7 +28,11 @@ const reducer = (state = INITIAL_STATE, action = { type: '@@analiseGeral/INIT' }
     case actions.types.CREATE_CARD:
       return {
         ...state,
-        cards: state.cards.push(action.payload.card),
+        cards: state.cards.push({
+          ...action.payload.card,
+          id: state.lastCardId++
+        }),
+        lastCardId: state.lastCardId ++,
       };
     case actions.types.DELETE_CARD:
       return {
@@ -38,7 +42,11 @@ const reducer = (state = INITIAL_STATE, action = { type: '@@analiseGeral/INIT' }
     case actions.types.CREATE_TAG:
       return {
         ...state,
-        tags: state.tags.push(action.payload.tag),
+        tags: state.tags.push({
+          ...action.payload.tag,
+          id: state.lastTagId++
+        }),
+        lastTagId: state.lastTagId ++,
       };
     case actions.types.DELETE_TAG:
       return {
@@ -48,7 +56,11 @@ const reducer = (state = INITIAL_STATE, action = { type: '@@analiseGeral/INIT' }
     case actions.types.CREATE_LIST:
       return {
         ...state,
-        lists: state.lists.push(action.payload.list),
+          lists: state.lists.push({
+          ...action.payload.list,
+          id: state.lastListId++
+        }),
+        lastListId: state.lastListId ++,
       };
     case actions.types.DELETE_LIST:
       return {
