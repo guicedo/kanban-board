@@ -1,11 +1,11 @@
 import React from 'react';
 import Title from '../commonComponents/title';
-import Cards from './cards';
+import Lists from './lists';
 import Background from './background.svg';
 
 import './kanbanBoardPage.scss';
 
-const cards = [{
+const lists = [{
   title: "📝  To Do",
   backgroundColor: "#5CC4FF",
   tasks: [],
@@ -26,9 +26,9 @@ const KanbanBoardPage = () => (
   <div className="kanban-board-page">
     <Title title="Kanban do projeto"/>
     <div className="kanban-board-page-content">
-      {(cards || []).map((card) => (
-        <Cards
-          card={card}
+      {(lists || []).map((list) => (
+        <Lists
+          list={list}
         />
       ))}
     </div>

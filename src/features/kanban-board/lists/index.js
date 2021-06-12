@@ -1,11 +1,11 @@
 // import { connect } from 'react-redux';
 
-import Cards from './cards';
+import Lists from './lists';
 /*
 const mapStateToProps = ({ analiseGeral }) => ({
   overview: analiseGeral.overview.overview,
 });*/
 
-// export default connect(mapStateToProps, null)(Cards);
+// export default connect(mapStateToProps, null)(Lists);
 
-export default Cards;
+export default Lists;
