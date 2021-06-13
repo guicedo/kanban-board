@@ -18,7 +18,7 @@
     "text edit"
     "tags tags";
   }
-  &-text{
+  &_text{
     grid-area: text;
     color: #212529;
     font-weight: 500;
@@ -27,11 +27,15 @@
 
     letter-spacing: -0.02em;
   }
-  &-edit{
+  &_edit{
     grid-area: edit;
   }
-  &-tags{
+  &_tags{
     grid-area: tags;
+    display: flex;
+    flex-direction: row;
+    gap: 8px 8px;
+    flex-wrap: wrap;
   }
 }
 
@@ -59,6 +63,10 @@
   }
   &-tags{
     grid-area: tags;
+    display: flex;
+    flex-direction: row;
+    gap: 8px 8px;
+    flex-wrap: wrap;
   }
   &-save{
     grid-area: save;

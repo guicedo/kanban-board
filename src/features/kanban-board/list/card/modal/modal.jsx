@@ -69,14 +69,14 @@ const ModalRobot = ({ tags, isOpen, onClose, cardId, createTag, updateTag }) => 
               <XCircle style={{ width: 16, cursor: "pointer", color: "#9c9c9cf0" }} onClick={() => { onClose(); }} />
             </div>
             <div className="tags-modal-freeTags">
-              Tags disponíveis 
+              Tags disponíveis
               {(tags.filter(tag => !tag?.cardsId?.includes(cardId)) || []).map((tag) => (
                 <div
                   className="card-item-tag_container"
-                  style={{ backgroundColor: tag.backgroundColor, cursor: "pointer"}}
-                  onClick={()=>updateTag({
-                    ...tag,
-                    cardsId: tag?.cardsId?.push(cardId),
+                  style={{ backgroundColor: tag.backgroundColor, cursor: "pointer" }}
+                  onClick={() => updateTag({
+                    cardsId: cardId,
+                    tagId: tag.id,
                   })}
                 >
                   {tag.value}
@@ -84,14 +84,16 @@ const ModalRobot = ({ tags, isOpen, onClose, cardId, createTag, updateTag }) => 
               ))}
             </div>
             <div className="tags-modal-usedTags">
-            Tags ativas 
+              <div className="tags-modal-usedTags-title">
+                Tags ativas
+              </div>
               {(tags.filter(tag => tag?.cardsId?.includes(cardId)) || []).map((tag) => (
                 <div
                   className="card-item-tag_container"
-                  style={{ backgroundColor: tag.backgroundColor, cursor: "pointer"}}
-                  onClick={()=>updateTag({
-                    ...tag,
-                    cardsId: tag?.cardsId?.filter(tag => tag !== cardId),
+                  style={{ backgroundColor: tag.backgroundColor, cursor: "pointer" }}
+                  onClick={() => updateTag({
+                    cardsId: cardId,
+                    tagId: tag.id,
                   })}
                 >
                   {tag.value}
@@ -112,21 +114,22 @@ const ModalRobot = ({ tags, isOpen, onClose, cardId, createTag, updateTag }) => 
                 options={colors}
               />
               <div className="tags-modal-buttons">
-                <div style={{width: "82px", marginTop: "8px"}}>
+                <div style={{ width: "82px", marginTop: "8px" }}>
                   <Button
                     disabled={tag === null || color === null}
                     onClick={() => {
                       createTag({
                         backgroundColor: color,
                         value: tag,
+                        cardsId: [],
                       });
                       setTag(null);
                       setColor(null);
                     }}>Criar tag</Button>
                 </div>
-                <div style={{width: "135px", marginTop: "8px", marginLeft: "135px"}}>
+                <div style={{ width: "135px", marginTop: "8px", marginLeft: "135px" }}>
                   <Button
-                    disabled={tag === null || color === null}
+                    onClick={() => { onClose(); }}
                   >Salvar alterações</Button>
                 </div>
               </div>

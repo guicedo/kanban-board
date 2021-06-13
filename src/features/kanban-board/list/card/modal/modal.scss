@@ -35,6 +35,10 @@
     flex-direction: row;
     gap: 8px 8px;
     flex-wrap: wrap;
+    &-title{
+      display: inline-block;
+      width: 100%;
+    }
   }
   &-create{
     margin-top: 16px;

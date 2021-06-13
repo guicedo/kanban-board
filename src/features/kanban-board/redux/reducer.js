@@ -8,12 +8,12 @@ const INITIAL_STATE = {
     value: "Pessoal",
     backgroundColor: "#945AD1",
     cardsId: [],
-  },{
+  }, {
     id: 1,
     value: "Profissional",
     backgroundColor: "#59D090",
     cardsId: [],
-  },{
+  }, {
     id: 2,
     value: "URGENTE",
     backgroundColor: "#ff1a1a",
@@ -47,7 +47,7 @@ const reducer = (state = INITIAL_STATE, action = { type: '@@analiseGeral/INIT' }
           ...action.payload.card,
           id: state.lastCardId++
         }),
-        lastCardId: state.lastCardId ++,
+        lastCardId: state.lastCardId++,
       };
     case actions.types.DELETE_CARD:
       return {
@@ -57,11 +57,11 @@ const reducer = (state = INITIAL_STATE, action = { type: '@@analiseGeral/INIT' }
     case actions.types.CREATE_TAG:
       return {
         ...state,
-        tags: state.tags.push({
+        tags: state.tags.concat({
           ...action.payload.tag,
-          id: state.lastTagId++
+          id: state.lastTagId++,
         }),
-        lastTagId: state.lastTagId ++,
+        lastTagId: state.lastTagId++,
       };
     case actions.types.DELETE_TAG:
       return {
@@ -71,11 +71,11 @@ const reducer = (state = INITIAL_STATE, action = { type: '@@analiseGeral/INIT' }
     case actions.types.CREATE_LIST:
       return {
         ...state,
-          lists: state.lists.push({
+        lists: state.lists.push({
           ...action.payload.list,
           id: state.lastListId++
         }),
-        lastListId: state.lastListId ++,
+        lastListId: state.lastListId++,
       };
     case actions.types.DELETE_LIST:
       return {
@@ -86,15 +86,30 @@ const reducer = (state = INITIAL_STATE, action = { type: '@@analiseGeral/INIT' }
     case actions.types.UPDATE_TAG:
       return {
         ...state,
-        tags: state.tags.map(
-          (tag) => tag.id === action.payload.tag.id ? action.payload.tag : tag),
+        tags: state.tags.map((tag) => {
+          console.log()
+          if (tag.id === action.payload.tag.tagId) {
+            if (tag?.cardsId?.includes(action.payload.tag.cardsId)) {
+              return {
+                ...tag,
+                cardsId: tag.cardsId.filter(tag => tag !== action.payload.tag.cardsId),
+              };
+            } else {
+              return {
+                ...tag,
+                cardsId: tag.cardsId.concat([action.payload.tag.cardsId]),
+              };
+            }
+          }
+          return tag;
+        }),
       };
     case actions.types.UPDATE_CARD:
       return {
         ...state,
         cards: state.cards.map(
           (card) => card.id === action.payload.card.id ? action.payload.card
-          : card),
+            : card),
       };
     default:
       return state;
