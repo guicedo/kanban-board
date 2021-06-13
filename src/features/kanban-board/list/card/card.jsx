@@ -10,26 +10,29 @@ import Modal from './modal';
 
 import './card.scss';
 
-const Card = ({ card, tags, updateCard, lists }) => {
+const Card = ({ card, tags, updateCard, lists, deleteCard }) => {
   const [isEditing, setIsEditing] = React.useState(null);
   const [isTagsModalOpen, setIsTagsModalOpen] = React.useState(null);
   const [text, setText] = React.useState(null);
   const [listId, setListId] = React.useState(null);
 
-  if (isEditing) {
+  if (isEditing || card.text === null) {
     return (
       <>
         <div className="card-item_container">
           <div className="card-item-edit_container">
             <div className="card-item-edit-text">
               <Input
-                placeholder="Nome"
+                placeholder="Nome do card"
                 value={text || card.text}
                 setValue={setText}
               />
             </div>
             <div className="card-item-edit-close">
-              <XCircle style={{ width: 16, cursor: "pointer", color: "#9c9c9cf0" }} onClick={() => { setIsEditing(false); }} />
+              <XCircle
+                style={{ width: 16, cursor: "pointer", color: "#9c9c9cf0" }}
+                onClick={() => { text === null & card.text === null? deleteCard(card.id) : setIsEditing(false)}}
+              />
             </div>
             <div className="card-item-edit-select">
               <Select
@@ -52,16 +55,27 @@ const Card = ({ card, tags, updateCard, lists }) => {
                 + Editar tags
               </div>
             </div>
-            <div className="card-item-edit-save">
-              <Button onClick={() => {
-                updateCard({
-                  ...card,
-                  text: text || card.text,
-                  listId: listId || card.listId,
-                });
-                setIsEditing(false);
-              }}>Salvar edições</Button>
+            <div className="card-item-edit-delete">
+              <Button
+                red
+                onClick={() => {
+                  deleteCard(card.id);
+                  setIsEditing(false);
+                }}>Excluir card</Button>
             </div>
+            <div className="card-item-edit-save">
+              <Button
+                disabled={text === null & card.text === null}
+                onClick={() => {
+                  updateCard({
+                    ...card,
+                    text: text || card.text,
+                    listId: listId || card.listId,
+                  });
+                  setIsEditing(false);
+                }}>Salvar edições</Button>
+            </div>
+            
           </div>
         </div>
         <Modal
@@ -98,12 +112,14 @@ Card.propTypes = {
   card: PropTypes.object,
   tags: PropTypes.array,
   updateCard: PropTypes.func,
+  deleteCard: PropTypes.func,
 };
 
 Card.defaultProps = {
   card: null,
   tags: [],
   updateCard: () => { },
+  deleteCard: () => { },
 };
 
 export default Card;

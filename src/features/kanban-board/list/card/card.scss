@@ -42,15 +42,15 @@
 .card-item-edit{
   &_container{
     display: grid;
-    grid-template-columns: 1fr 16px;
+    grid-template-columns: 1fr 1fr 16px;
     grid-template-rows: auto auto;
     grid-row-gap: 8px;
     grid-column-gap: 8px;
     grid-template-areas:
-    "text close"
-    "select select"
-    "tags tags"
-    "save save";
+    "text text close"
+    "select select select"
+    "tags tags tags"
+    "delete save save";
   }
   &-text{
     grid-area: text;
@@ -70,6 +70,9 @@
   }
   &-save{
     grid-area: save;
+  }
+  &-delete{
+    grid-area: delete;
   }
 }
 

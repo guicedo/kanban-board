@@ -43,7 +43,7 @@ const reducer = (state = INITIAL_STATE, action = { type: '@@analiseGeral/INIT' }
     case actions.types.CREATE_CARD:
       return {
         ...state,
-        cards: state.cards.push({
+        cards: state.cards.concat({
           ...action.payload.card,
           id: state.lastCardId++
         }),
@@ -71,7 +71,7 @@ const reducer = (state = INITIAL_STATE, action = { type: '@@analiseGeral/INIT' }
     case actions.types.CREATE_LIST:
       return {
         ...state,
-        lists: state.lists.push({
+        lists: state.lists.concat({
           ...action.payload.list,
           id: state.lastListId++
         }),

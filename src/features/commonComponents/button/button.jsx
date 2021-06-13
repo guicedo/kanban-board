@@ -5,17 +5,17 @@ import './button.scss';
 
 
 const Button = ({
-  disabled, onClick, children
+  disabled, onClick, children, red
 }) => (
   <button
-    className="button-container"
+    className={red ? "button-container button-container-red" : "button-container"}
     type="button"
     disabled={disabled}
     onClick={onClick}
   >
     <div className="button-content"
     >
-    {children}
+      {children}
     </div>
   </button>
 );
@@ -24,12 +24,14 @@ Button.propTypes = {
   children: PropTypes.node,
   disabled: PropTypes.bool,
   onClick: PropTypes.func,
+  red: PropTypes.bool,
 };
 
 Button.defaultProps = {
   children: null,
   disabled: null,
-  onClick: () => {},
+  onClick: () => { },
+  red: false,
 };
 
 export default Button;
