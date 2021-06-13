@@ -3,8 +3,23 @@ import actions from './actions';
 const INITIAL_STATE = {
   cards: [],
   lastCardId: 0,
-  tags: [],
-  lastTagId: 0,
+  tags: [{
+    id: 0,
+    value: "Pessoal",
+    backgroundColor: "#945AD1",
+    cardsId: [],
+  },{
+    id: 1,
+    value: "Profissional",
+    backgroundColor: "#59D090",
+    cardsId: [],
+  },{
+    id: 2,
+    value: "URGENTE",
+    backgroundColor: "#ff1a1a",
+    cardsId: [],
+  }],
+  lastTagId: 2,
   lists: [{
     title: "📝  To Do",
     backgroundColor: "#5CC4FF",
@@ -72,8 +87,7 @@ const reducer = (state = INITIAL_STATE, action = { type: '@@analiseGeral/INIT' }
       return {
         ...state,
         tags: state.tags.map(
-          (tag) => tag.id === action.payload.tag.id ? action.payload.tag
-          : tag),
+          (tag) => tag.id === action.payload.tag.id ? action.payload.tag : tag),
       };
     case actions.types.UPDATE_CARD:
       return {

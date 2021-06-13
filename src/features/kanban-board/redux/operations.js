@@ -25,6 +25,7 @@ const createTag = (tag) => (dispatch) => {
 };
 
 const updateTag = (tag) => (dispatch) => {
+  console.log(tag);
   dispatch(actions.updateTag(tag));
 };
 

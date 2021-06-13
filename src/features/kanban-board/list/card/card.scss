@@ -34,3 +34,52 @@
     grid-area: tags;
   }
 }
+
+.card-item-edit{
+  &_container{
+    display: grid;
+    grid-template-columns: 1fr 16px;
+    grid-template-rows: auto auto;
+    grid-row-gap: 8px;
+    grid-column-gap: 8px;
+    grid-template-areas:
+    "text close"
+    "select select"
+    "tags tags"
+    "save save";
+  }
+  &-text{
+    grid-area: text;
+  }
+  &-select{
+    grid-area: select;
+  }
+  &-close{
+    grid-area: close;
+  }
+  &-tags{
+    grid-area: tags;
+  }
+  &-save{
+    grid-area: save;
+  }
+}
+
+.card-item-tag_container{
+  border-radius: 5px;
+  padding: 5px 10px;
+  color: #FFFFFF;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 14px;
+  
+  letter-spacing: -0.02em;
+
+  display: flex;
+  flex-direction: row;
+
+  &-editar{
+    width: 65px;
+    cursor: pointer;
+  }
+}
