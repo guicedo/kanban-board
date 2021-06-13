@@ -6,6 +6,7 @@ const DELETE_LIST = 'kanban-board/DELETE_LIST';
 const CREATE_TAG = 'kanban-board/CREATE_TAG';
 const DELETE_TAG = 'kanban-board/DELETE_TAG';
 const UPDATE_TAG = 'kanban-board/UPDATE_TAG';
+const UPDATE_LIST = 'kanban-board/UPDATE_LIST';
 
 const createCard = (card) => ({
   type: CREATE_CARD,
@@ -42,6 +43,11 @@ const updateTag = (tag) => ({
   payload: { tag },
 });
 
+const updateList = (list) => ({
+  type: UPDATE_LIST,
+  payload: { list },
+});
+
 const deleteTag = (id) => ({
   type: DELETE_TAG,
   payload: { id },
@@ -57,14 +63,16 @@ const actions = {
     CREATE_TAG,
     DELETE_TAG,
     UPDATE_TAG,
+    UPDATE_LIST,
   },
   createCard,
   deleteCard,
   updateCard, 
   createList,
   deleteList,
-  createTag, 
+  createTag,
   updateTag, 
+  updateList, 
   deleteTag,
 };
 

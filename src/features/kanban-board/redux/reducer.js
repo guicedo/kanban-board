@@ -35,7 +35,7 @@ const INITIAL_STATE = {
     backgroundColor: "#59D090",
     id: 3,
   }],
-  lastListId: 3,
+  lastListId: 4,
 };
 
 const reducer = (state = INITIAL_STATE, action = { type: '@@analiseGeral/INIT' }) => {
@@ -73,7 +73,7 @@ const reducer = (state = INITIAL_STATE, action = { type: '@@analiseGeral/INIT' }
         ...state,
         lists: state.lists.concat({
           ...action.payload.list,
-          id: state.lastListId++
+          id: state.lastListId++,
         }),
         lastListId: state.lastListId++,
       };
@@ -87,7 +87,6 @@ const reducer = (state = INITIAL_STATE, action = { type: '@@analiseGeral/INIT' }
       return {
         ...state,
         tags: state.tags.map((tag) => {
-          console.log()
           if (tag.id === action.payload.tag.tagId) {
             if (tag?.cardsId?.includes(action.payload.tag.cardsId)) {
               return {
@@ -103,6 +102,13 @@ const reducer = (state = INITIAL_STATE, action = { type: '@@analiseGeral/INIT' }
           }
           return tag;
         }),
+      };
+    case actions.types.UPDATE_LIST:
+      return {
+        ...state,
+        lists: state.lists.map(
+          (list) => list.id === action.payload.list.id ? action.payload.list
+            : list),
       };
     case actions.types.UPDATE_CARD:
       return {

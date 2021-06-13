@@ -24,8 +24,8 @@ const createTag = (tag) => (dispatch) => {
   dispatch(actions.createTag(tag));
 };
 
-const updateTag = (tag) => (dispatch) => {
-  dispatch(actions.updateTag(tag));
+const updateList = (list) => (dispatch) => {
+  dispatch(actions.updateList(list));
 };
 
 const deleteTag = (id) => (dispatch) => {
@@ -37,7 +37,7 @@ const operations = {
   createList, 
   updateCard, 
   createTag, 
-  updateTag, 
+  updateList, 
   deleteCard,
   deleteList,
   deleteTag,

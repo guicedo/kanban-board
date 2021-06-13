@@ -7,13 +7,13 @@
     border-radius: 5px;
 
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 20px;
     grid-template-rows: auto auto 16px;
     grid-row-gap: 16px;
     grid-template-areas:
-    "title"
-    "tasks"
-    "add";
+    "title edit"
+    "tasks tasks"
+    "add  add";
   }
 
   &_title {
@@ -25,6 +25,11 @@
 
     letter-spacing: -0.02em;
 
+    color: #FFFFFF;
+  }
+
+  &_edit {
+    grid-area: edit;
     color: #FFFFFF;
   }
 
@@ -46,5 +51,40 @@
     display: flex;
     flex-direction: row;
     cursor: pointer;
+  }
+
+  &_edit{
+    &-container{
+      height: 100%;
+      padding: 20px;
+      flex: 1 1 0px;
+      min-width: 240px;
+      border-radius: 5px;
+  
+      display: grid;
+      grid-template-columns: 1fr 1fr 16px;
+      grid-template-rows: auto auto auto;
+      grid-row-gap: 8px;
+      grid-column-gap: 8px;
+      grid-template-areas:
+      "title title close"
+      "color color color"
+      "delete save save";
+    }
+    &-title{
+      grid-area: title;
+    }
+    &-close{
+      grid-area: close;
+    }
+    &-color{
+      grid-area: color;
+    }
+    &-save{
+      grid-area: save;
+    }
+    &-delete{
+      grid-area: delete;
+    }
   }
 }

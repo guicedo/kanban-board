@@ -9,6 +9,8 @@ const mapStateToProps = ({ kanbanBoard }) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   createCard: (card) => dispatch(operations.createCard(card)),
+  updateList: (card) => dispatch(operations.updateList(card)),
+  deleteList: (id) => dispatch(operations.deleteList(id)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(List);
