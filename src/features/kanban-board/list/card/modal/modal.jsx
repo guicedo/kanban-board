@@ -69,7 +69,10 @@ const ModalRobot = ({ tags, isOpen, onClose, cardId, createTag, updateTag }) => 
               <XCircle style={{ width: 16, cursor: "pointer", color: "#9c9c9cf0" }} onClick={() => { onClose(); }} />
             </div>
             <div className="tags-modal-freeTags">
+              <div className="tags-modal-freeTags-title">
               Tags disponíveis
+              </div>
+              
               {(tags.filter(tag => !tag?.cardsId?.includes(cardId)) || []).map((tag) => (
                 <div
                   className="card-item-tag_container"
@@ -104,7 +107,7 @@ const ModalRobot = ({ tags, isOpen, onClose, cardId, createTag, updateTag }) => 
               Criar nova tag
               <Input
                 placeholder="Criar uma tag"
-                value={tag}
+                value={tag || ""}
                 setValue={setTag}
               />
               <Select
