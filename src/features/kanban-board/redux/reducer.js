@@ -35,7 +35,7 @@ const INITIAL_STATE = {
     backgroundColor: "#59D090",
     id: 3,
   }],
-  lastListId: 4,
+  lastListId: 3,
 };
 
 const reducer = (state = INITIAL_STATE, action = { type: '@@analiseGeral/INIT' }) => {
@@ -45,9 +45,9 @@ const reducer = (state = INITIAL_STATE, action = { type: '@@analiseGeral/INIT' }
         ...state,
         cards: state.cards.concat({
           ...action.payload.card,
-          id: state.lastCardId++
+          id: state.lastCardId+1
         }),
-        lastCardId: state.lastCardId++,
+        lastCardId: state.lastCardId+1,
       };
     case actions.types.DELETE_CARD:
       return {
@@ -59,23 +59,18 @@ const reducer = (state = INITIAL_STATE, action = { type: '@@analiseGeral/INIT' }
         ...state,
         tags: state.tags.concat({
           ...action.payload.tag,
-          id: state.lastTagId++,
+          id: state.lastTagId+1,
         }),
-        lastTagId: state.lastTagId++,
-      };
-    case actions.types.DELETE_TAG:
-      return {
-        ...state,
-        tags: state.tags.filter(tag => tag.id !== action.payload.id),
+        lastTagId: state.lastTagId+1,
       };
     case actions.types.CREATE_LIST:
       return {
         ...state,
         lists: state.lists.concat({
           ...action.payload.list,
-          id: state.lastListId++,
+          id: state.lastListId+1,
         }),
-        lastListId: state.lastListId++,
+        lastListId: state.lastListId+1,
       };
     case actions.types.DELETE_LIST:
       return {

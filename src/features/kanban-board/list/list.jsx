@@ -103,8 +103,7 @@ const List = ({ list, createCard, cards, deleteList, updateList}) => {
 };
 
 List.propTypes = {
-  children: PropTypes.node,
-  className: PropTypes.string,
+  list: PropTypes.object,
   createCard: PropTypes.func,
   cards: PropTypes.array,
   deleteList: PropTypes.func,
@@ -112,8 +111,7 @@ List.propTypes = {
 };
 
 List.defaultProps = {
-  children: null,
-  className: '',
+  list: null,
   createCard: () => { },
   cards: [],
   deleteList: () => { },

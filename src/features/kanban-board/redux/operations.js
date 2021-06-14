@@ -28,9 +28,7 @@ const updateList = (list) => (dispatch) => {
   dispatch(actions.updateList(list));
 };
 
-const deleteTag = (id) => (dispatch) => {
-  dispatch(actions.deleteTag(id));
-};
+
 
 const operations = {
   createCard, 
@@ -40,7 +38,6 @@ const operations = {
   updateList, 
   deleteCard,
   deleteList,
-  deleteTag,
 };
 
 export default operations;

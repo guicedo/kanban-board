@@ -4,7 +4,6 @@ const UPDATE_CARD = 'kanban-board/UPDATE_CARD';
 const CREATE_LIST = 'kanban-board/CREATE_LIST';
 const DELETE_LIST = 'kanban-board/DELETE_LIST';
 const CREATE_TAG = 'kanban-board/CREATE_TAG';
-const DELETE_TAG = 'kanban-board/DELETE_TAG';
 const UPDATE_TAG = 'kanban-board/UPDATE_TAG';
 const UPDATE_LIST = 'kanban-board/UPDATE_LIST';
 
@@ -48,10 +47,6 @@ const updateList = (list) => ({
   payload: { list },
 });
 
-const deleteTag = (id) => ({
-  type: DELETE_TAG,
-  payload: { id },
-});
 
 const actions = {
   types: {
@@ -61,7 +56,6 @@ const actions = {
     CREATE_LIST,
     DELETE_LIST,
     CREATE_TAG,
-    DELETE_TAG,
     UPDATE_TAG,
     UPDATE_LIST,
   },
@@ -73,7 +67,6 @@ const actions = {
   createTag,
   updateTag, 
   updateList, 
-  deleteTag,
 };
 
 export default actions;
