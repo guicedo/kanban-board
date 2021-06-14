@@ -12,7 +12,8 @@ Já para rodar o projeto, devemos seguir o seguinte passo a passo:
 
 
 Observações:
-A fonte do projeto foi alterada devido ao fato da fonte usada no prototipo ser uma fonte paga.
+A fonte do projeto foi alterada devido ao fato da fonte usada no protótipo ser uma fonte paga.
+Tentei explorar diferentes niveis de complexidade nos componentes, com componentes mais simples como os que estão na pasta common a componentes mais complexos como o componente que renderiza os cards.
 
 
 Autor: Guilherme Macedo
